@@ -1,17 +1,21 @@
 function Navbar() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className="navbar">
-      {/* Left */}
       <div className="nav-left">Siddharth</div>
 
-      {/* Center */}
       <ul className="nav-center">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a onClick={() => scrollToSection('about')}>About</a></li>
+        <li><a onClick={() => scrollToSection('projects')}>Projects</a></li>
+        <li><a onClick={() => scrollToSection('contact')}>Contact</a></li>
       </ul>
 
-      {/* Right (empty for balance) */}
       <div className="nav-right"></div>
     </nav>
   );
