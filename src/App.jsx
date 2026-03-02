@@ -1,55 +1,94 @@
-import React, { useState, useEffect } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import './index.css';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Work from './components/Work';
+import Experience from './components/Experience';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import LoadingScreen from './components/LoadingScreen';
-import Snowfall from 'react-snowfall';
 
-function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
+/* Cursor ball that follows the mouse */
+function CursorBall() {
+  const ballRef = useRef(null);
+  const pos = useRef({ x: -100, y: -100 });
+  const raf  = useRef(null);
 
   useEffect(() => {
-    // Wait for loading screen to finish
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 1200);
+    const move = (e) => { pos.current = { x: e.clientX, y: e.clientY }; };
+    window.addEventListener('mousemove', move);
 
-    return () => clearTimeout(timer);
+    const tick = () => {
+      if (ballRef.current) {
+        ballRef.current.style.left = pos.current.x + 'px';
+        ballRef.current.style.top  = pos.current.y + 'px';
+      }
+      raf.current = requestAnimationFrame(tick);
+    };
+    raf.current = requestAnimationFrame(tick);
+
+    const addHover = () => ballRef.current?.classList.add('hovered');
+    const rmHover  = () => ballRef.current?.classList.remove('hovered');
+    const interactables = document.querySelectorAll('a, button, [role="button"]');
+    interactables.forEach((el) => {
+      el.addEventListener('mouseenter', addHover);
+      el.addEventListener('mouseleave', rmHover);
+    });
+
+    return () => {
+      window.removeEventListener('mousemove', move);
+      cancelAnimationFrame(raf.current);
+    };
   }, []);
 
+  return <div className="cursor-ball" ref={ballRef} />;
+}
+
+/* Generic scroll-reveal wiring for .sr elements */
+function useScrollReveal() {
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.sr').forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+}
+
+function App() {
+  useScrollReveal();
+
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className={`app-container ${isLoaded ? 'loaded' : ''}`}>
+    <>
       <LoadingScreen />
-      <Snowfall
-        color="#d9c2a6"
-        snowflakeCount={50}
-        speed={[0.5, 1.5]}
-        wind={[-0.5, 0.5]}
-        radius={[0.5, 2]}
-        opacity={[0.3, 0.6]}
-        style={{
-          position: 'fixed',
-          width: '100%',
-          height: '100%',
-          zIndex: 1,
-          pointerEvents: 'none'
-        }}
-      />
-      <Navbar />
-      <main className="main-content">
+      <CursorBall />
+      <div className="app-container">
+        <Navbar scrollToSection={scrollToSection} />
+        <Hero scrollToSection={scrollToSection} />
         <About />
-        <Hero />
         <Skills />
         <Work />
+        <Experience />
         <Resume />
         <Contact />
-      </main>
-    </div>
+        <footer className="site-footer">
+          <span className="footer-left">Designed &amp; built by Siddharth Dwivedi &mdash; 2026</span>
+          <div className="footer-right">
+            <a href="https://github.com/sidd-zero"            target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/sidd-zero/"   target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
 

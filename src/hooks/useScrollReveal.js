@@ -1,27 +1,22 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 
-export const useScrollReveal = () => {
+export function useScrollReveal() {
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+    const targets = document.querySelectorAll('.sr, .sr-fade, .sr-left');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
 
-    // Observe all elements with reveal class
-    const revealElements = document.querySelectorAll('.reveal-on-scroll');
-    revealElements.forEach((el) => observer.observe(el));
-
-    return () => {
-      revealElements.forEach((el) => observer.unobserve(el));
-    };
+    targets.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
   }, []);
-};
+}

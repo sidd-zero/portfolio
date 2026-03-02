@@ -1,14 +1,19 @@
-function Contact() {
+﻿function Contact() {
   return (
-    <section id="contact" className="contact">
-      <div className="contact-content">
-        <h3>Get In Touch</h3>
-        <div className="contact-links">
-          <a href="mailto:sidd.dwi.07@gmail.com" className="contact-link">Email</a>
-          <a href="https://www.linkedin.com/in/sidd-zero/" target="_blank" rel="noopener noreferrer" className="contact-link">
-            LinkedIn
-          </a>
-        </div>
+    <section className="contact-section" id="contact">
+      <h2 className="contact-big sr">
+        Let&apos;s<br /><em>Work Together.</em>
+      </h2>
+      <div className="contact-links sr sr-d1">
+        <a href="mailto:siddharthdwi.07@gmail.com" className="contact-link">
+          Email
+        </a>
+        <a href="https://www.linkedin.com/in/sidd-zero/" target="_blank" rel="noopener noreferrer" className="contact-link">
+          LinkedIn 
+        </a>
+        <a href="https://github.com/sidd-zero" target="_blank" rel="noopener noreferrer" className="contact-link">
+          GitHub 
+        </a>
       </div>
     </section>
   );

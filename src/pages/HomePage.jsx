@@ -51,7 +51,7 @@ function HomePage() {
       <div className="contact-section">
         <h2>Get In Touch</h2>
         <div className="contact-buttons">
-          <a href="mailto:sidd.dwi.07@gmail.com" className="contact-btn">Email</a>
+          <a href="mailto:siddharthdwi.7@gmail.com" className="contact-btn">Email</a>
           <a href="https://www.linkedin.com/in/sidd-zero/" target="_blank" rel="noopener noreferrer" className="contact-btn">
             LinkedIn
           </a>
