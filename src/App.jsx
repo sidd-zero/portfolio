@@ -1,4 +1,5 @@
 ﻿import { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Navbar from './components/Navbar';
 import About from './components/About';
@@ -9,12 +10,13 @@ import Experience from './components/Experience';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import LoadingScreen from './components/LoadingScreen';
+import ResumePage from './pages/ResumePage';
 
 /* Cursor ball that follows the mouse */
 function CursorBall() {
   const ballRef = useRef(null);
   const pos = useRef({ x: -100, y: -100 });
-  const raf  = useRef(null);
+  const raf = useRef(null);
 
   useEffect(() => {
     const move = (e) => { pos.current = { x: e.clientX, y: e.clientY }; };
@@ -23,14 +25,14 @@ function CursorBall() {
     const tick = () => {
       if (ballRef.current) {
         ballRef.current.style.left = pos.current.x + 'px';
-        ballRef.current.style.top  = pos.current.y + 'px';
+        ballRef.current.style.top = pos.current.y + 'px';
       }
       raf.current = requestAnimationFrame(tick);
     };
     raf.current = requestAnimationFrame(tick);
 
     const addHover = () => ballRef.current?.classList.add('hovered');
-    const rmHover  = () => ballRef.current?.classList.remove('hovered');
+    const rmHover = () => ballRef.current?.classList.remove('hovered');
     const interactables = document.querySelectorAll('a, button, [role="button"]');
     interactables.forEach((el) => {
       el.addEventListener('mouseenter', addHover);
@@ -60,7 +62,7 @@ function useScrollReveal() {
   }, []);
 }
 
-function App() {
+function MainLayout() {
   useScrollReveal();
 
   const scrollToSection = (id) => {
@@ -68,27 +70,36 @@ function App() {
   };
 
   return (
-    <>
+    <div className="app-container">
+      <Navbar scrollToSection={scrollToSection} />
+      <Hero scrollToSection={scrollToSection} />
+      <About />
+      <Skills />
+      <Work />
+      <Experience />
+      <Resume />
+      <Contact />
+      <footer className="site-footer">
+        <span className="footer-left">Designed &amp; built by Siddharth Dwivedi &mdash; 2026</span>
+        <div className="footer-right">
+          <a href="https://github.com/sidd-zero" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/sidd-zero/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
       <LoadingScreen />
       <CursorBall />
-      <div className="app-container">
-        <Navbar scrollToSection={scrollToSection} />
-        <Hero scrollToSection={scrollToSection} />
-        <About />
-        <Skills />
-        <Work />
-        <Experience />
-        <Resume />
-        <Contact />
-        <footer className="site-footer">
-          <span className="footer-left">Designed &amp; built by Siddharth Dwivedi &mdash; 2026</span>
-          <div className="footer-right">
-            <a href="https://github.com/sidd-zero"            target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/sidd-zero/"   target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </footer>
-      </div>
-    </>
+      <Routes>
+        <Route path="/" element={<MainLayout />} />
+        <Route path="/resume" element={<ResumePage />} />
+      </Routes>
+    </Router>
   );
 }
 

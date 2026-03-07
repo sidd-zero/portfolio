@@ -57,7 +57,7 @@ function About() {
               <span className="about-stat-label">Years Learning</span>
             </div>
             <div className="about-stat">
-              <span className="about-stat-num"></span>
+              <span className="about-stat-num">∞</span>
               <span className="about-stat-label">Curiosity</span>
             </div>
           </div>

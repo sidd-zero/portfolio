@@ -1,7 +1,7 @@
 ﻿function Resume() {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/siddharth resume ta.pdf';
+    link.href = '/Siddharth_Dwivedi_Resume.pdf';
     link.download = 'Siddharth_Dwivedi_Resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -19,7 +19,7 @@
       </p>
       <div className="sr sr-d2">
         <button className="hero-link-btn primary" onClick={handleDownload}>
-          Download Resume 
+          Download Resume
         </button>
       </div>
     </section>
