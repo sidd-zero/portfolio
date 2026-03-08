@@ -10,7 +10,6 @@ import Experience from './components/Experience';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import LoadingScreen from './components/LoadingScreen';
-import ResumePage from './pages/ResumePage';
 
 /* Cursor ball that follows the mouse */
 function CursorBall() {
@@ -97,7 +96,6 @@ function App() {
       <CursorBall />
       <Routes>
         <Route path="/" element={<MainLayout />} />
-        <Route path="/resume" element={<ResumePage />} />
       </Routes>
     </Router>
   );

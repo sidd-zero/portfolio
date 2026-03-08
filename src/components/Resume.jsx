@@ -1,8 +1,8 @@
 ﻿function Resume() {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Siddharth_Dwivedi_Resume.pdf';
-    link.download = 'Siddharth_Dwivedi_Resume.pdf';
+    link.href = '/Siddharth_Resume.pdf';
+    link.download = 'Siddharth_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

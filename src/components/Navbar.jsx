@@ -54,9 +54,6 @@ function Navbar({ scrollToSection }) {
             <button onClick={() => go(l.id)}>{l.label}</button>
           </li>
         ))}
-        <li>
-          <button onClick={() => { setMenuOpen(false); navigate('/resume'); }}>Resume</button>
-        </li>
       </ul>
 
       <button
