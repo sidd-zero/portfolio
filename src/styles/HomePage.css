@@ -195,6 +195,13 @@
   transform: translateY(-2px);
 }
 
+/* Achievements Section */
+.achievements-section {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 40px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .portfolio-container {

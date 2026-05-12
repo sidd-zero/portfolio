@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 function Navbar({ scrollToSection }) {
@@ -11,6 +11,7 @@ function Navbar({ scrollToSection }) {
     { label: 'Stack', id: 'stack' },
     { label: 'Projects', id: 'projects' },
     { label: 'Experience', id: 'experience' },
+    { label: 'Achievements', id: 'achievements' },
     { label: 'Contact', id: 'contact' },
   ];
 

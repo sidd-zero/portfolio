@@ -14,7 +14,7 @@ function Hero({ scrollToSection }) {
       {/* Left sidebar — rotated quote */}
       <div className="hero-sidebar">
         <span className="hero-sidebar-text">
-          Frontend Developer &nbsp;&mdash;&nbsp; Open to Opportunities
+          Full Stack Developer &nbsp;&mdash;&nbsp; Open to Opportunities
         </span>
       </div>
 
@@ -36,7 +36,7 @@ function Hero({ scrollToSection }) {
         </div>
 
         <div className="hero-meta">
-          <span className="hero-role">Frontend Developer</span>
+          <span className="hero-role">Full Stack Developer</span>
           <span className="hero-dot" />
           <span className="hero-role">React &nbsp;/ &nbsp;Python</span>
           <div className="hero-scroll-hint">

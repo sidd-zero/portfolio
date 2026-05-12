@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Navbar from './components/Navbar';
@@ -7,6 +7,7 @@ import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Work from './components/Work';
 import Experience from './components/Experience';
+import Achievements from './components/Achievements';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import LoadingScreen from './components/LoadingScreen';
@@ -76,6 +77,7 @@ function MainLayout() {
       <Skills />
       <Work />
       <Experience />
+      <Achievements />
       <Resume />
       <Contact />
       <footer className="site-footer">
