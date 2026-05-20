@@ -5,7 +5,7 @@ const EXPERIENCES = [
     num: '01',
     role: 'Web Development Intern',
     company: 'GODAEON Studio',
-    period: 'Dec 2025 — Present',
+    period: 'Dec 2025 — May 2026',
     type: 'Internship',
     bullets: [
       'Enhancing and maintaining the official GODAEON website as part of the studio\'s digital ecosystem.',

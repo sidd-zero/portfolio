@@ -1,4 +1,4 @@
-﻿function Resume() {
+function Resume() {
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = '/Siddharth_Resume.pdf';

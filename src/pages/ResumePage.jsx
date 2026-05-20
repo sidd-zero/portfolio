@@ -89,7 +89,7 @@ function ResumePage() {
           </div>
 
           <div className="resume-download-footer">
-            <a href="/Siddharth_Dwivedi_Resume.pdf" download className="hero-link-btn primary">
+            <a href="/Siddharth_Resume.pdf" download="Siddharth_Resume.pdf" className="hero-link-btn primary">
               Download PDF Version
             </a>
           </div>
