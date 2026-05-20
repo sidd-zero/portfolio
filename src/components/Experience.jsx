@@ -26,6 +26,7 @@ const EXPERIENCES = [
       'Handling technical maintenance to ensure stability and growth of the web presence at an incubated startup.',
     ],
     tags: ['Web Dev', 'Feature Dev', 'UX', 'MVP'],
+    certificate: '/fined_certificate.pdf',
   },
 ];
 
@@ -88,6 +89,16 @@ function Experience() {
           <div className="exp-meta-col">
             <span className="exp-period">{exp.period}</span>
             <span className="exp-type">{exp.type}</span>
+            {exp.certificate && (
+              <a
+                href={exp.certificate}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="exp-cert-link"
+              >
+                Certificate ↗
+              </a>
+            )}
           </div>
         </div>
       ))}

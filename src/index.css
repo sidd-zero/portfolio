@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    PORTFOLIO — index.css
    Ewan Kerboas inspired: pure black, editorial, massive type
    ============================================================ */
@@ -1066,6 +1066,28 @@ ol {
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.18rem 0.6rem;
   border-radius: 2px;
+}
+
+.exp-cert-link {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.22rem 0.7rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+}
+
+.exp-cert-link:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 /*  RESUME  */
