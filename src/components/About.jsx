@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 function About() {
   const headRef = useRef(null);
@@ -25,7 +25,7 @@ function About() {
         {/* Left: image + big heading */}
         <div className="about-left">
           <div className="about-img-wrap">
-            <img src="/images/sidd image 2.jpeg" alt="Siddharth Dwivedi" className="about-img" />
+            <img src="/images/siddjalgo1.jpeg" alt="Siddharth Dwivedi" className="about-img" />
           </div>
           <div className="about-heading-wrap" ref={headRef}>
             <span className="about-heading">Who<br />I Am.</span>
