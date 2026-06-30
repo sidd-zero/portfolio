@@ -134,19 +134,19 @@ const Achievements = () => {
 
         if (i < peelIdx) {
           // Card has already been peeled off - send it up and hide it
-          translateY = -120;
+          translateY = -130;
           scale = 0.9;
           brightness = 0.6;
           zIndex = 0;
           opacity = 0;
         } else if (i === peelIdx) {
           // THIS IS THE CARD CURRENTLY PEELING
-          translateY = peelProgress * -55;
+          translateY = peelProgress * -105;
           scale = 1;
           brightness = 1;
           zIndex = 100 + (numCards - i);
-          // Fade slightly near the end so it doesn't linger as a clipped strip.
-          opacity = peelProgress < 0.85 ? 1 : Math.max(0, 1 - ((peelProgress - 0.85) / 0.15));
+          // Fade out earlier so the peeling card doesn't overlap the next card's text
+          opacity = peelProgress < 0.5 ? 1 : Math.max(0, 1 - ((peelProgress - 0.5) / 0.35));
         } else if (i === peelIdx + 1) {
           // NEXT CARD - rises into place as the active card peels
           scale = 0.94 + (peelProgress * 0.06);
